@@ -3,8 +3,8 @@ import {View, Image, StyleSheet, Dimensions} from 'react-native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../../App';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-// import TutorialScreen from './TutorialScreen';
-// import LoginScreen from './LoginScreen';
+import TutorialScreen from '../tutorial/TutorialScreen';
+import LoginScreen from '../login/LoginScreen';
 const SCREEN_WIDTH = Dimensions.get('screen').width;
 const SCREEN_HEIGHT = Dimensions.get('screen').height;
 
