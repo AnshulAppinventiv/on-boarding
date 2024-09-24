@@ -1,118 +1,115 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import React, {Component} from 'react';
+//Navigation
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+//screens
+import SplashScreen from './src/screens/spalsh/splashScreen';
+import TutorialScreen from './src/screens/tutorial/tutorialScreen';
+import LoginScreen from './src/screens/login/loginScreen';
+import VerifyAccountAccess from './src/screens/verifyAccountAccess/verifyAccountAccess';
+import CreateAccount from './src/screens/register/createAccount';
+import ForgotPasswordScreen from './src/screens/forgotPassword/forgotPassword';
+import ResetPasswordScreen  from './src/screens/resetPassword/resetPassword';
+import HomeScreen from './src/screens/home/home';
+import Toast from 'react-native-toast-message';
+import PhoneNumberScreen from './src/screens/addPhoneNumber/addPhoneNumber';
+// import { CustomToast } from './src/components/Toastmsg';
 
-import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+export type RootStackParamList = {
+  SplashScreen: undefined;
+  TutorialScreen: undefined;
+  LoginScreen: undefined;
+  ForgotPasswordScreen: undefined;
+  ResetPasswordScreen:undefined;
+  verifyAccountAccess: undefined;
+  CreateAccount: undefined;
+  HomeScreen:undefined;
+  PhoneNumberScreen:undefined;
+};
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
+export default class App extends Component {
+  render() {
+    return (
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="SplashScreen">
+          <Stack.Screen
+            name="SplashScreen"
+            component={SplashScreen}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="TutorialScreen"
+            component={TutorialScreen}
+            options={{
+              title: 'TutorialScreen',
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="LoginScreen"
+            component={LoginScreen}
+            options={{
+              title: 'LoginScreen',
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="ForgotPasswordScreen"
+            component={ForgotPasswordScreen}
+            options={{
+              title: 'ForgotPasswordScreen',
+              headerShown: false,
+            }}
+          />
 
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
+          <Stack.Screen
+            name="ResetPasswordScreen"
+            component={ResetPasswordScreen}
+            options={{
+              title: 'ResetPasswordScreen',
+              headerShown: false,
+            }}
+          />
+
+          <Stack.Screen
+            name="CreateAccount"
+            component={CreateAccount}
+            options={{
+              title: 'CreateAccount',
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="HomeScreen"
+            component={HomeScreen}
+            options={{
+              title: 'HomeScreen',
+              headerShown: false,
+            }}
+          />
+
+          <Stack.Screen
+            name="PhoneNumberScreen"
+            component={PhoneNumberScreen}
+            options={{
+              title: 'PhoneNumberScreen',
+              headerShown: false,
+            }}
+          />
+
+          <Stack.Screen
+            name="verifyAccountAccess"
+            component={VerifyAccountAccess}
+            options={{
+              title: 'verifyAccountAccess',
+              headerShown: false,
+            }}
+          />
+        </Stack.Navigator>
+        <Toast />
+      </NavigationContainer>
+    );
+  }
 }
-
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-}
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
-
-export default App;
