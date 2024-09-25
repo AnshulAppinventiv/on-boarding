@@ -1,17 +1,23 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
-import {View, Image, TouchableOpacity, StyleSheet, Text} from 'react-native';
+import {
+  View,
+  Image,
+  TouchableOpacity,
+  StyleSheet,
+  Text,
+} from 'react-native';
 import {TextInput as PaperTextInput} from 'react-native-paper';
 import {SCREEN_WIDTH} from '../utils/scaling';
 interface PasswordInputProps {
   label: string;
   value: string;
   passwordError: string;
-  isPasswordVisible: boolean;
+  isPasswordVisible?: boolean;
   onChangeText: (text: string) => void;
-  togglePasswordVisibility: () => void;
-  onFocus: () => void;
-  onBlur: () => void;
+  togglePasswordVisibility?: () => void;
+  onFocus?: () => void;
+  onBlur?: () => void;
 }
 
 class PasswordInput extends Component<PasswordInputProps> {
@@ -59,7 +65,7 @@ class PasswordInput extends Component<PasswordInputProps> {
             activeUnderlineColor={passwordError ? 'red' : 'black'}
             mode="flat"
             underlineStyle={{
-              display:'none',
+              display: 'none',
             }}
             theme={{
               colors: {

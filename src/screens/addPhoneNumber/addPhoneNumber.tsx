@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
 import {View, Text, TouchableOpacity, StyleSheet, Image} from 'react-native';
-import CountryPicker from 'react-native-country-picker-modal';
+import CountryPicker, { CountryCode, DARK_THEME } from 'react-native-country-picker-modal';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../../App';
 import {TextInput} from 'react-native-paper';
@@ -13,7 +13,7 @@ type PhoneNumberProps = NativeStackScreenProps<
 
 type State = {
   phoneNumber: string;
-  countryCode: string;
+  countryCode: CountryCode;
   callingCode: string;
 };
 
@@ -74,6 +74,7 @@ class PhoneNumberScreen extends Component<PhoneNumberProps, State> {
               withCountryNameButton={false}
               onSelect={this.onSelectCountry}
               containerButtonStyle={styles.countryCodeButton}
+              theme={DARK_THEME}
             />
             <View style={styles.inputContainer}>
               <Text>+{this.state.callingCode}</Text>
@@ -88,7 +89,7 @@ class PhoneNumberScreen extends Component<PhoneNumberProps, State> {
                 }}
                 theme={{
                   colors: {
-                    primary: 'black', // Label color when focused and border color
+                    primary: 'black',
                   },
                 }}
               />

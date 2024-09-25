@@ -215,13 +215,11 @@ class ResetPasswordScreen extends Component<ResetProps, State> {
 
             <PasswordInput
               label="Confirm Password"
-              // icon={confirmPasswordError ? require('../../assets/icons/error_password.png') : require('../../assets/icons/password.png')}
-              onFocus={null}
-              onBlur={null}
               value={confirmPassword}
               onChangeText={this.validateConfirmPassword}
               passwordError={confirmPasswordError}
-              secureTextEntry={true}
+              isPasswordVisible={isPasswordVisible}
+              togglePasswordVisibility={this.togglePasswordVisibility}
             />
           </View>
 

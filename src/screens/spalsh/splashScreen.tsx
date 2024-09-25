@@ -3,8 +3,8 @@ import {View, Image, StyleSheet, Dimensions} from 'react-native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../../App';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import TutorialScreen from '../tutorial/TutorialScreen';
-import LoginScreen from '../login/LoginScreen';
+// import TutorialScreen from '../tutorial/TutorialScreen';
+// import LoginScreen from '../login/LoginScreen';
 const SCREEN_WIDTH = Dimensions.get('screen').width;
 const SCREEN_HEIGHT = Dimensions.get('screen').height;
 
@@ -23,7 +23,7 @@ class SplashScreen extends Component<SplashScreenProps> {
   storage = async () => {
     try {
       const login = await AsyncStorage.getItem('isLogin');
-      // console.log(login);
+      console.log(login);
       if (login === 'true') {
         this.props.navigation.navigate('HomeScreen');
       } else {

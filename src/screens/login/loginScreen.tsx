@@ -1,5 +1,5 @@
- /* eslint-disable react-native/no-inline-styles */
-import React, { Component } from 'react';
+/* eslint-disable react-native/no-inline-styles */
+import React, {Component} from 'react';
 import {
   View,
   Text,
@@ -9,14 +9,18 @@ import {
   ScrollView,
   Modal,
 } from 'react-native';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import EmailInput from '../../components/emailInput';
 import PasswordInput from '../../components/passwordInput';
-import { RootStackParamList } from '../../../App';
+import {RootStackParamList} from '../../../App';
 import AutoScroll from '@homielab/react-native-auto-scroll';
-import Toast, { BaseToast, ToastProps, ToastConfig } from 'react-native-toast-message';
-import { SCREEN_HEIGHT, SCREEN_WIDTH } from '../../utils/scaling';
+import Toast, {
+  BaseToast,
+  ToastProps,
+  ToastConfig,
+} from 'react-native-toast-message';
+import {SCREEN_HEIGHT, SCREEN_WIDTH} from '../../utils/scaling';
 
 type LoginProps = NativeStackScreenProps<RootStackParamList, 'LoginScreen'>;
 
@@ -43,7 +47,7 @@ export default class LoginScreen extends Component<LoginProps, State> {
       passwordError: '',
       isPasswordVisible: false,
       topContainerFlex: 0,
-      isButtonEnabled: 0.4,
+      isButtonEnabled: 0.2,
       isModalVisible: false,
       loginAttempts: 0,
       isAccountLocked: false,
@@ -60,21 +64,21 @@ export default class LoginScreen extends Component<LoginProps, State> {
 
   // Live email validation
   handleEmailChange = (email: string) => {
-    this.setState({ email });
+    this.setState({email});
     if (!this.validateEmail(email)) {
-      this.setState({ emailError: 'Invalid email address entered' });
+      this.setState({emailError: 'Invalid email address entered'});
     } else {
-      this.setState({ emailError: '' });
+      this.setState({emailError: ''});
     }
   };
 
   // Live password validation
   handlePasswordChange = (password: string) => {
-    this.setState({ password });
+    this.setState({password});
     if (password.length < 6) {
-      this.setState({ passwordError: 'Password must be at least 6 characters' });
+      this.setState({passwordError: 'Password must be at least 6 characters'});
     } else {
-      this.setState({ passwordError: '' });
+      this.setState({passwordError: ''});
     }
   };
 
@@ -84,21 +88,21 @@ export default class LoginScreen extends Component<LoginProps, State> {
   };
 
   handleLogin = () => {
-    const { email, password, isAccountLocked } = this.state;
+    const {email, password, isAccountLocked} = this.state;
     let isValid = true;
 
     if (isAccountLocked) {
-      this.setState({ isModalVisible: true });
+      this.setState({isModalVisible: true});
       return;
     }
 
     if (!this.validateEmail(email)) {
-      this.setState({ emailError: 'Invalid email address entered' });
+      this.setState({emailError: 'Invalid email address entered'});
       isValid = false;
     }
 
     if (password.length < 6) {
-      this.setState({ passwordError: 'Invalid password entered' });
+      this.setState({passwordError: 'Invalid password entered'});
       isValid = false;
     }
 
@@ -118,7 +122,7 @@ export default class LoginScreen extends Component<LoginProps, State> {
       });
 
       if (this.state.loginAttempts + 1 >= 3) {
-        this.setState({ isAccountLocked: true, isModalVisible: true });
+        this.setState({isAccountLocked: true, isModalVisible: true});
       }
     } else {
       this.storeLoginStatus();
@@ -134,15 +138,15 @@ export default class LoginScreen extends Component<LoginProps, State> {
   };
 
   handleEmailFocus = () => {
-    this.setState({ topContainerFlex: 4 });
+    this.setState({topContainerFlex: 4});
   };
 
   handleEmailBlur = () => {
-    this.setState({ topContainerFlex: 0 });
+    this.setState({topContainerFlex: 0});
   };
 
   closeModal = () => {
-    this.setState({ isModalVisible: false });
+    this.setState({isModalVisible: false});
   };
 
   render() {
@@ -157,9 +161,8 @@ export default class LoginScreen extends Component<LoginProps, State> {
 
     return (
       <View style={styles.container}>
-
         <View
-          style={[styles.topContainer, { flex: this.state.topContainerFlex }]}>
+          style={[styles.topContainer, {flex: this.state.topContainerFlex}]}>
           <Image
             source={require('../../assets/icons/headerImage.png')}
             style={styles.headerImage}
@@ -255,7 +258,7 @@ export default class LoginScreen extends Component<LoginProps, State> {
             <TouchableOpacity
               style={[
                 styles.loginButton,
-                { opacity: this.state.isButtonEnabled },
+                {opacity: this.state.isButtonEnabled},
               ]}
               onPress={this.handleLogin}>
               <Text style={styles.loginButtonText}>Primary</Text>
@@ -296,12 +299,16 @@ export default class LoginScreen extends Component<LoginProps, State> {
   }
 }
 
-const toastConfig = ToastConfig = {
-  tomatoToast: ({ text1, text2, ...rest }: { text1: string; text2: string } & ToastProps) => (
+const toastConfig = (ToastConfig = {
+  tomatoToast: ({
+    text1,
+    text2,
+    ...rest
+  }: {text1: string; text2: string} & ToastProps) => (
     <BaseToast
       {...rest}
-      style={{ borderLeftColor: 'tomato' }}
-      contentContainerStyle={{ paddingHorizontal: 15 }}
+      style={{borderLeftColor: 'tomato'}}
+      contentContainerStyle={{paddingHorizontal: 15}}
       text1Style={{
         fontSize: 15,
         fontWeight: 'bold',
@@ -314,7 +321,7 @@ const toastConfig = ToastConfig = {
       text2={text2}
     />
   ),
-};
+});
 
 const styles = StyleSheet.create({
   container: {
