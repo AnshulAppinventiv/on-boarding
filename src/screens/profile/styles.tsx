@@ -1,0 +1,175 @@
+import { StyleSheet } from 'react-native';
+import {SCREEN_HEIGHT, SCREEN_WIDTH} from '../../utils/scaling';
+
+export const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: '#FFFFFF',
+    },
+    header: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      width: SCREEN_WIDTH / 1.7,
+      marginLeft: 26,
+    },
+    leftArrow: {
+      width: 48,
+      height: 48,
+      borderRadius: 16,
+    },
+    title: {
+      fontSize: 20,
+      fontWeight: '500',
+    },
+    profileImg: {
+      width: SCREEN_WIDTH / 2.5,
+      height: SCREEN_HEIGHT / 5.0,
+      marginLeft: 16,
+    },
+    topContainer: {
+      flexDirection: 'row',
+      marginTop: 16,
+      alignItems: 'center',
+    },
+    profilePicText: {
+      color: '#4B5879',
+      fontSize: 14,
+      fontWeight: '400',
+      marginBottom: 8,
+    },
+    changePhotoText: {
+      fontSize: 16,
+      color: '#EE28A9',
+      marginBottom: 18,
+      fontWeight: '500',
+    },
+    subContainer: {
+      alignItems: 'center',
+    },
+    phoneInputContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+    nameInput: {
+      width: SCREEN_WIDTH / 1.2,
+      height: 60,
+      backgroundColor: 'white',
+      marginBottom: 16,
+    },
+    birthdayInput: {
+      width: SCREEN_WIDTH / 1.2,
+      height: 60,
+      backgroundColor: 'white',
+      marginBottom: 16,
+    },
+    birthdayContainer: {
+      position: 'relative',
+    },
+    calendarButton: {
+      position: 'absolute',
+      right: 0,
+      paddingTop: 26,
+      paddingRight: 20,
+    },
+    calendarImage: {
+      width: 20,
+      height: 20,
+    },
+    iconImage: {},
+    genderInput: {
+      width: SCREEN_WIDTH / 1.2,
+      height: 60,
+      backgroundColor: 'white',
+      marginBottom: 16,
+    },
+    countryContainer: {
+      width: SCREEN_WIDTH / 4.5,
+      height: 60,
+      borderWidth: 1,
+      borderColor: '#E7EBF3',
+      borderRadius: 16,
+      marginBottom: 10,
+      marginRight: 16,
+      alignItems: 'center',
+      justifyContent: 'center',
+      flexDirection: 'row',
+    },
+    flagWrapper: {
+      alignItems: 'center',
+      width: 22,
+      height: 22,
+      borderRadius: 20,
+      overflow: 'hidden',
+      backgroundColor: 'white',
+    },
+    countryPicker: {
+      width: 22,
+      height: 22,
+    },
+    callingCodeText: {
+      marginLeft: 10,
+      fontSize: 16,
+      color: 'black',
+    },
+    phoneNumberInput: {
+      width: SCREEN_WIDTH / 1.8,
+      height: 60,
+      backgroundColor: '#fff',
+      marginBottom: 16,
+    },
+    emailInput: {
+      width: SCREEN_WIDTH / 1.2,
+      height: 60,
+      backgroundColor: 'white',
+      marginBottom: 40,
+    },
+    button: {
+      width: SCREEN_WIDTH / 1.2,
+      height: 60,
+      backgroundColor: '#000080',
+      borderRadius: 16,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    buttonText: {
+      color: 'white',
+      fontWeight: 'bold',
+    },
+    modalContainer: {
+      flex:1,
+      justifyContent: 'flex-end',
+      alignItems: 'center',
+      backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    },
+    modalContent: {
+      width: 428,
+      height: 419,
+      borderTopRightRadius: 30,
+      borderTopLeftRadius: 30,
+      backgroundColor: 'white',
+      borderRadius: 10,
+      padding: 20,
+    },
+    modalOption: {
+      width: 350,
+      height: 85,
+      borderRadius: 16,
+      alignItems: 'center',
+      flexDirection: 'row',
+      backgroundColor: '#F6F9FA',
+      marginTop: 20,
+      marginLeft: 18,
+      borderBottomWidth: 1,
+      borderBottomColor: '#E7EBF3',
+    },
+    modalOptionText: {
+      fontSize: 18,
+      textAlign: 'center',
+      color: '#7F879A',
+    },
+    option1Img: {
+      width: 46,
+      height: 48,
+    },
+  });

@@ -4,33 +4,24 @@ import {
   View,
   Text,
   Image,
-  StyleSheet,
   TouchableOpacity,
   FlatList,
   ScrollView,
-  Dimensions,
   Modal,
 } from 'react-native';
 
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../../App';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {styles} from './styles';
 
 type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'HomeScreen'>;
-
-const SCREEN_WIDTH = Dimensions.get('screen').width;
-const SCREEN_HEIGHT = Dimensions.get('screen').height;
 
 type EquipmentItem = {
   id: string;
   name: string;
 };
 
-const locations = [
-  'Papa Bear Anderson',
-  'Sunset Blvd, LA',
-  'Ocean Drive, Miami',
-];
 const equipmentData: EquipmentItem[] = [
   {
     id: '1',
@@ -63,7 +54,6 @@ const equipmentData: EquipmentItem[] = [
 ];
 
 type State = {
-  selectedLocation: string;
   locationModalVisible: boolean;
   moreOptionsVisible: boolean;
   isContentModalVisible: boolean;
@@ -73,7 +63,6 @@ export default class HomeScreen extends Component<HomeScreenProps, State> {
   constructor(props: HomeScreenProps) {
     super(props);
     this.state = {
-      selectedLocation: locations[0],
       locationModalVisible: false,
       moreOptionsVisible: false,
       isContentModalVisible: false, // Initialize modal visibility state
@@ -87,9 +76,6 @@ export default class HomeScreen extends Component<HomeScreenProps, State> {
     } catch (error) {}
   };
 
-  setSelectedLocation = (location: string) => {
-    this.setState({selectedLocation: location, locationModalVisible: false});
-  };
 
   toggleLocationModal = () => {
     this.setState({locationModalVisible: !this.state.locationModalVisible});
@@ -340,261 +326,4 @@ export default class HomeScreen extends Component<HomeScreenProps, State> {
     );
   }
 }
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    width: SCREEN_WIDTH / 1,
-    backgroundColor: '#E6EDF3',
-    paddingLeft: 16,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  header: {
-    width: SCREEN_WIDTH / 1.0 + 20,
-    backgroundColor: '#2A7BBB',
-    padding: 20,
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  headerText: {
-    width: SCREEN_WIDTH / 1.5 - 6,
-    height: SCREEN_HEIGHT / 8.0,
-    justifyContent: 'flex-end',
-    marginLeft: 4,
-  },
-  welcomeText: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: '400',
-    marginRight: 6,
-  },
-  nameText: {
-    color: '#fff',
-    fontSize: 20,
-    fontWeight: '600',
-  },
-  headerImages: {
-    width: SCREEN_WIDTH / 3.9,
-    height: SCREEN_HEIGHT / 8.0,
-    flexDirection: 'row',
-    paddingHorizontal: 4,
-    paddingBottom: 4,
-    alignItems: 'flex-end',
-    justifyContent: 'space-between',
-  },
-  messageButton: {
-    width: 40,
-    height: 40,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#FFFFFF1A',
-    borderRadius: 8,
-  },
-  messageIcon: {
-    width: 24,
-    height: 24,
-  },
-  bellButton: {
-    width: 40,
-    height: 40,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#FFFFFF1A',
-    borderRadius: 8,
-  },
-  bellIcon: {
-    width: 24,
-    height: 24,
-  },
-  content: {
-    flexDirection: 'row',
-    width: 361,
-    height: 74,
-    marginTop: 20,
-    borderRadius: 8,
-    backgroundColor: '#D9E2EE',
-    alignItems: 'center',
-  },
-  mainImage: {
-    width: 36,
-    height: 36,
-    marginLeft: 20,
-  },
-  head: {
-    fontSize: 12,
-    fontWeight: '600',
-    color: '#525454',
-    marginTop: 30,
-  },
-  subContent: {
-    width: 156,
-    height: 64,
-    marginTop: 14,
-    marginRight: 20,
-    borderRadius: 4,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'white',
-  },
-  subContentImage: {
-    width: 24,
-    height: 24,
-    marginVertical: 20,
-  },
-  subContentHeading: {
-    fontSize: 13,
-    color: '#000',
-    fontWeight: 'bold',
-  },
-  subContentText: {
-    fontSize: 12,
-    width: 254,
-    color: '#fff',
-  },
-  listHeaderContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  allProduct: {
-    flexDirection: 'row',
-    height: 40,
-    marginRight: 16,
-    alignItems: 'flex-end',
-  },
-  allProductText: {
-    color: '#23679D',
-    fontWeight: '600',
-    fontSize: 13,
-  },
-  down: {
-    width: 8,
-    height: 5,
-    marginBottom: 7,
-  },
-  flatView: {
-    width: SCREEN_WIDTH / 1.1 + 4,
-    backgroundColor: '#ffffff',
-    marginTop: 16,
-    paddingVertical: 10,
-    borderRadius: 8,
-    borderColor: 'black',
-  },
-  flatListHeaderText: {
-    fontSize: 12,
-    color: '#525454',
-    fontWeight: '600',
-    marginTop: 26,
-  },
-  equipmentItem: {
-    width: SCREEN_WIDTH / 1.1 - 4,
-    height: SCREEN_HEIGHT / 13,
-    borderColor: '#D9D9D9',
-    alignItems: 'center',
-    marginVertical: 10,
-    // backgroundColor: 'blue',
-  },
-  equipmentDetails: {
-    width: SCREEN_WIDTH / 1.3 + 16,
-    flexDirection: 'row',
-    // backgroundColor: 'yellow',
-  },
-  itemName: {
-    fontSize: 14,
-    fontWeight: 'bold',
-    marginBottom: 4,
-    marginLeft: 14,
-  },
-  itemCategory: {
-    marginLeft: 14,
-    fontSize: 12,
-    color: '#888',
-  },
-  listImgButton: {
-    width: 40,
-    height: 40,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 20,
-    backgroundColor: '#23679D1A',
-  },
-  equipmentDetailsImage: {
-    width: 20,
-    height: 20,
-  },
-  Line: {
-    width: 313,
-    marginTop: 14,
-    borderWidth: 1,
-    borderColor: '#0000000F',
-  },
-  itemLocation: {
-    fontSize: 12,
-    color: '#666',
-  },
-  footer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    width: SCREEN_WIDTH / 1,
-    height: 94,
-    paddingLeft: 4,
-    marginRight:10,
-    paddingVertical: 10,
-    borderTopWidth: 1,
-    borderTopColor: '#000',
-    backgroundColor: '#ffffff',
-  },
-  footerItem: {
-    alignItems: 'center',
-  },
-  footerIcon: {
-    width: 22,
-    height: 22,
-    resizeMode: 'contain',
-  },
-  footerText: {
-    fontSize: 10,
-    color: '#333',
-    marginTop: 5,
-  },
-  modalContainer: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-  },
-  modalContent: {
-    width: SCREEN_WIDTH / 1,
-    height: SCREEN_HEIGHT / 1.4,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    backgroundColor: '#E6EDF3',
-    // justifyContent: 'center',
-    alignItems: 'center',
-  },
-  modalImage: {
-    width: 111,
-    height: 148,
-    marginTop: 32,
-  },
-  modalTextImg: {
-    width: 320,
-    height: 289,
-    marginRight: 40,
-    marginTop: 24,
-  },
-  GetStartedButton: {
-    width: 345,
-    height: 56,
-    backgroundColor: '#2A7BBB',
-    borderRadius: 8,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  closeModal: {
-    color: '#fff',
-    fontWeight: 'bold',
-    fontSize: 16,
-    // marginTop: 20,
-  },
-});
+

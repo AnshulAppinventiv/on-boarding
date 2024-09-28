@@ -13,6 +13,7 @@ import ResetPasswordScreen  from './src/screens/resetPassword/resetPassword';
 import HomeScreen from './src/screens/home/home';
 import Toast from 'react-native-toast-message';
 import PhoneNumberScreen from './src/screens/addPhoneNumber/addPhoneNumber';
+import ProfileScreen from './src/screens/profile/profileScreen';
 // import { CustomToast } from './src/components/Toastmsg';
 
 export type RootStackParamList = {
@@ -25,6 +26,7 @@ export type RootStackParamList = {
   CreateAccount: undefined;
   HomeScreen:undefined;
   PhoneNumberScreen:undefined;
+  ProfileScreen:undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -33,7 +35,7 @@ export default class App extends Component {
   render() {
     return (
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="SplashScreen">
+        <Stack.Navigator initialRouteName="ProfileScreen">
           <Stack.Screen
             name="SplashScreen"
             component={SplashScreen}
@@ -104,6 +106,14 @@ export default class App extends Component {
             component={VerifyAccountAccess}
             options={{
               title: 'verifyAccountAccess',
+              headerShown: false,
+            }}
+          />
+           <Stack.Screen
+            name="ProfileScreen"
+            component={ProfileScreen}
+            options={{
+              title: 'ProfileScreen',
               headerShown: false,
             }}
           />
